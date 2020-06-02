@@ -20,6 +20,39 @@
     color: seagreen;
   }
 
+  .sections {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+
+  .sections button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+
+  .sections button:hover {
+    background-color: #ddd;
+  }
+
+
+  .sections button.active {
+    background-color: #ccc;
+  }
+
+
+  .sectionsContent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
 
 
   </style>
@@ -27,9 +60,8 @@
 <body style="background-color:LightSteelBlue;">
   <div class="nameannounce">
       <em> Hey, I'm </em>
-  <h1>Dan McCarthy</h1>
-  <h2>Welcome to my website </h2>
-
+      <h1>Dan McCarthy</h1>
+      <h2>Welcome to my website </h2>
   </div>
 
   <div class="heading1">
@@ -48,7 +80,49 @@
   <div class="bodyparagraphs1">
     <p> Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence of ideas among sentences is what constitutes a paragraph. A paragraph is defined as “a group of sentences or a single sentence that forms a unit” (Lunsford and Connors 116). Length and appearance do not determine whether a section in a paper is a paragraph. For instance, in some styles of writing, particularly journalistic styles, a paragraph can be just one sentence long. Ultimately, a paragraph is a sentence or group of sentences that support one main idea. In this handout, we will refer to this as the “controlling idea,” because it controls what happens in the rest of the paragraph.
     </p>
+  </div>
+
+
+
+<h2>Tabs</h2>
+<p>Click on the buttons inside the tabbed menu:</p>
+
+<div class="sections">
+  <button class="tablinks" onclick="openSection(event, 'About Me')">About Me</button>
+  <button class="tablinks" onclick="openSection(event, 'Projects')">Projects</button>
+  <button class="tablinks" onclick="openSection(event, 'Tools')">Tools</button>
 </div>
+
+<div id="About Me" class="sectionsContent">
+  <h3>About Me</h3>
+  <p>Things about me etc...</p>
+</div>
+
+<div id="Projects" class="sectionsContent">
+  <h3>Projects</h3>
+  <p>Things I've done...</p>
+</div>
+
+<div id="Tools" class="sectionsContent">
+  <h3>Tools</h3>
+  <p>Things to help.</p>
+</div>
+
+<script>
+function openSection(evt, sectionName) {
+  var i, sectionsContent, tablinks;
+  sectionsContent = document.getElementsByClassName("sectionsContent");
+  for (i = 0; i < sectionsContent.length; i++) {
+    sectionsContent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(sectionName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
 
 
 </body>
